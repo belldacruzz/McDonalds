@@ -9,12 +9,12 @@ import {
     StatusBar,
 } from "react-native";
 import { Ionicons, Feather } from "@expo/vector-icons";
-
+ 
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "./HomeScreen";
-
+ 
 type Props = NativeStackScreenProps<RootStackParamList, "Menu">;
-
+ 
 const combos = [
     {
         id: 1,
@@ -45,20 +45,19 @@ const combos = [
         image: require('../assets/images/images/images/combo-duplo-cheddar-mcmelt.png'),
     },
 ];
-
+ 
 const categories = ['Combos', 'Lanches', 'Bebidas', 'Fritas'];
-
+ 
 export default function MenuScreen({ navigation }: Props) {
     const [activeCategory, setActiveCategory] = useState<string>('Combos');
     return (
         <View style={styles.container}>
-            <StatusBar barStyle={"light-content"} backgroundColor={"#000000"} />
+            <StatusBar barStyle={"light-content"} backgroundColor={"#000"} />
             <ScrollView
                 style={styles.scroll}
                 contentContainerStyle={styles.scrollContent}
                 showsVerticalScrollIndicator={false}
             >
-
                 <View style={styles.headerImageWrapper}>
                     <Image
                         source={require('../images/restaurante.png')}
@@ -70,108 +69,158 @@ export default function MenuScreen({ navigation }: Props) {
                         activeOpacity={0.8}
                         onPress={() => navigation.goBack()}
                     >
-                        <Ionicons name="chevron-back" size={22} color="#000000" />
+                        <Ionicons name="chevron-back" size={22} color="#5e5e5e" />
                     </TouchableOpacity>
+ 
                     <TouchableOpacity
                         style={[styles.headerButton, styles.headerButtonRight]}
                         activeOpacity={0.8}
                         onPress={() => { }}
                     >
-                        <Feather name="file-text" size={20} color="#000000" />
+                        <Feather name="file-text" size={22} color="#5e5e5e" />
                     </TouchableOpacity>
-
-
-
                 </View>
-            </ScrollView >
-        </View >
+                <View style={styles.infoCard}>
+                    <View style={styles.infoTopRow}>
+                        <Image
+                            source={require('../images/logo.png')}
+                            style={styles.infoLogo}
+                            resizeMode="contain"
+                        />
+                        <View style={styles.infoText}>
+                            <Text style={styles.brandName}>McDonald's</Text>
+                            <Text style={styles.brandSubtitle}>R. Dr. Renato Paes de Barros, 1017</Text>
+                        </View>
+                    </View>
+                    <View style={styles.statusRow}>
+                        <Feather name="clock" size={14} color="#59bb48" />
+                        <Text style={styles.statusText}>Aberto até 22:00</Text>
+                    </View>
+                    <ScrollView
+                        horizontal={true}
+                        showsHorizontalScrollIndicator={false}
+                        contentContainerStyle={styles.categoriesRow}
+                    >
+                        {categories.map((category) => {
+                            const isActive = category === activeCategory;
+                            return (
+                                <TouchableOpacity
+                                    key={category}
+                                    activeOpacity={0.8}
+                                    onPress={() => setActiveCategory(category)}
+                                    style={[
+                                        styles.categoryPill,
+                                        isActive && styles.categoryPillActives
+                                    ]}
+                                >
+                                    <Text
+                                        style={[
+                                            styles.categoryText,
+                                            isActive && styles.categoryTextActive,
+                                        ]}
+                                    >
+                                        {category}
+                                    </Text>
+                                </TouchableOpacity>
+                            );
+                        })}
+ 
+                    </ScrollView>
+                </View>
+            </ScrollView>
+        </View>
     );
 }
-
+ 
 const styles = StyleSheet.create({
     container: {
-
+ 
     },
     scroll: {
-
+ 
     },
     scrollContent: {
-
+ 
     },
     headerImageWrapper: {
-
+ 
     },
     headerImage: {
-
+ 
     },
     headerButton: {
-
+ 
     },
     headerButtonLeft: {
-
+ 
     },
     headerButtonRight: {
-
+ 
     },
     infoCard: {
-
+ 
     },
-    infoCardRow: {
-
+    infoTopRow: {
+ 
     },
     infoLogo: {
-
+ 
     },
     infoText: {
-
+ 
     },
     brandName: {
-
+ 
     },
     brandSubtitle: {
-
+ 
     },
     statusRow: {
-
+ 
     },
     statusText: {
-
+ 
     },
     categoriesRow: {
-
+ 
     },
     categoryPill: {
-
+ 
     },
     categoryPillActives: {
-
+ 
     },
     categoryText: {
-
+ 
     },
     categoryTextActive: {
-
+ 
     },
     sectionTitle: {
-
+ 
+    },
+    prductsRow: {
+ 
     },
     productRowDivider: {
-
+ 
     },
     productInfo: {
-
+ 
     },
     productName: {
-
+ 
     },
     productDescription: {
-
+ 
     },
     productPrice: {
-
+ 
     },
     productImage: {
-
+ 
     },
-
+ 
 })
+ 
+ 
