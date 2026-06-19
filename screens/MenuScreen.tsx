@@ -9,12 +9,12 @@ import {
     StatusBar,
 } from "react-native";
 import { Ionicons, Feather } from "@expo/vector-icons";
- 
+
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "./HomeScreen";
- 
+
 type Props = NativeStackScreenProps<RootStackParamList, "Menu">;
- 
+
 const combos = [
     {
         id: 1,
@@ -45,9 +45,9 @@ const combos = [
         image: require('../assets/images/images/images/combo-duplo-cheddar-mcmelt.png'),
     },
 ];
- 
+
 const categories = ['Combos', 'Lanches', 'Bebidas', 'Fritas'];
- 
+
 export default function MenuScreen({ navigation }: Props) {
     const [activeCategory, setActiveCategory] = useState<string>('Combos');
     return (
@@ -71,7 +71,7 @@ export default function MenuScreen({ navigation }: Props) {
                     >
                         <Ionicons name="chevron-back" size={22} color="#5e5e5e" />
                     </TouchableOpacity>
- 
+
                     <TouchableOpacity
                         style={[styles.headerButton, styles.headerButtonRight]}
                         activeOpacity={0.8}
@@ -124,103 +124,189 @@ export default function MenuScreen({ navigation }: Props) {
                                 </TouchableOpacity>
                             );
                         })}
- 
                     </ScrollView>
+                    <Text style={styles.sectionTitle}>Combos</Text>
+                    {combos.map((combo, index) => (
+                        <TouchableOpacity
+                            key={combo.id}
+                            style={[
+                                styles.productRow,
+                                index > 0 && styles.productRowDivider,
+                            ]}
+                            activeOpacity={0.85}
+                            onPress={() => {
+
+                            }}
+                        >
+                            <View style={styles.productInfo}>
+                                <Text style={styles.productName}>{combo.name}</Text>
+                                <Text style={styles.productDescription} numberOfLines={2}>
+                                    {combo.description}
+                                </Text>
+                                <Text style={styles.productPrice}>{combo.price}</Text>
+                            </View>
+                            <Image
+                                source={combo.image}
+                                style={styles.productImage}
+                                resizeMode="contain"
+                            />
+                        </TouchableOpacity>
+                    ))}
                 </View>
             </ScrollView>
         </View>
     );
 }
- 
+
 const styles = StyleSheet.create({
     container: {
- 
+        flex: 1,
+        backgroundColor: "#F2F2F2",
     },
     scroll: {
- 
+        flex: 1,
     },
     scrollContent: {
- 
+        paddingBottom: 32
     },
     headerImageWrapper: {
- 
+        width: "100%",
+        height: 240,
+        position: "relative",
+        backgroundColor: "#000",
     },
     headerImage: {
- 
+        width: "100%",
+        height: "100%",
     },
     headerButton: {
- 
+        position: "absolute",
+        top: 48,
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+        backgroundColor: "#FFFFFF",
+        alignItems: "center",
+        justifyContent: "center",
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2, },
+        shadowOpacity: 0.15,
+        shadowRadius: 4,
+        elevation: 4,
     },
     headerButtonLeft: {
- 
+        left: 16,
     },
     headerButtonRight: {
- 
+        right: 16,
     },
     infoCard: {
- 
+        backgroundColor: "#FFFFFF",
+        marginHorizontal: 24,
+        borderTopLeftRadius: 24,
+        borderTopRightRadius: 24,
+        paddingHorizontal: 20,
+        paddingTop: 20,
+        paddingBottom: 16,
+        minHeight: 600,
     },
     infoTopRow: {
- 
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 12,
     },
     infoLogo: {
- 
+        width: 48,
+        height: 48,
+        borderRadius: 8,
     },
     infoText: {
- 
+        flex: 1,
     },
     brandName: {
- 
+        fontSize: 18,
+        color: "#000000",
+        fontWeight: "700",
     },
     brandSubtitle: {
- 
+        fontSize: 13,
+        color: "#707070",
+        marginTop: 2,
     },
     statusRow: {
- 
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 6,
+        marginTop: 12,
     },
     statusText: {
- 
+        color: "#2BAA3B",
+        fontSize: 13,
+        fontWeight: "600",
     },
     categoriesRow: {
- 
+        flexDirection: "row",
+        gap: 10,
+        paddingVertical: 18,
+        paddingRight: 12,
     },
     categoryPill: {
- 
+        paddingHorizontal: 18,
+        paddingVertical: 9,
+        borderRadius: 22,
+        backgroundColor: "#F2F2F2",
     },
     categoryPillActives: {
- 
+        backgroundColor: "#FFC72C"
     },
     categoryText: {
- 
+        fontSize: 14,
+        fontWeight: "600",
+        color: "#000000",
     },
     categoryTextActive: {
- 
+        color: "#000000",
     },
     sectionTitle: {
- 
+        fontSize: 18,
+        fontWeight: "700",
+        color: "#000000",
+        marginBottom: 8,
     },
-    prductsRow: {
- 
+    productRow: {
+        flexDirection: "row",
+        alignItems: "center",
+        paddingVertical: 14,
+        gap: 12,
     },
     productRowDivider: {
- 
+        borderTopWidth: 1,
+        borderTopColor: "#EEEEEE",
     },
     productInfo: {
- 
+        flex: 1,
     },
     productName: {
- 
+        fontSize: 15,
+        fontWeight: "700",
+        color: "#000000",
+        marginBottom: 4,
     },
     productDescription: {
- 
+        fontSize: 13,
+        color: "#707070",
+        lineHeight: 18,
+        marginBottom: 8,
     },
     productPrice: {
- 
+        fontSize: 14,
+        fontWeight: "700",
+        color: "#000000",
     },
     productImage: {
- 
+        width: 90,
+        height: 70,
     },
- 
+
 })
- 
- 
+
