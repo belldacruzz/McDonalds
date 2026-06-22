@@ -15,36 +15,94 @@ import { RootStackParamList } from "./HomeScreen";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Menu">;
 
-const combos = [
+type Product = {
+    id: string;
+    name: string;
+    description: string;
+    price: string;
+    image: number;
+}
+
+
+const combos: Product[] = [
     {
-        id: 1,
+        id: 'combo-1',
         name: 'McOferta Média Big Mac Duplo',
         description: 'O clássico Big Mac, acompanhado de batatas médias e uma bebida média.',
         price: 'R$ 39,90',
         image: require('../assets/images/images/combo-big-mac-duplo.png')
     },
     {
-        id: 2,
+        id: 'combo-2',
         name: 'Novo Brabo Melt Onion Ring',
         description: 'Delicioso hambúrguer com anéis de cebola crocantes, acompanhado de batatas médias e uma bebida média.',
         price: 'R$ 41,50',
         image: require('../assets/images/images/images/combo-brabo-melt-onion-rings.png'),
     },
     {
-        id: 3,
+        id: 'combo-3',
         name: 'McCrispy Chicken Elite',
         description: 'Saboroso hambúrguer de frango crispy, acompanhado de batatas médias e uma bebida média.',
         price: 'R$ 39,90',
         image: require('../assets/images/images/images/combo-mcrispy-elite.png'),
     },
     {
-        id: 4,
+        id: 'combo-4',
         name: 'Duplo Cheddar McMelt',
         description: 'Hambúrguer suculento com cheddar derretido, acompanhado de batatas médias e uma bebida média.',
         price: 'R$ 36,20',
         image: require('../assets/images/images/images/combo-duplo-cheddar-mcmelt.png'),
     },
 ];
+
+const lanches: Product[] = [
+{
+    id: 'lanche-1',
+    name: 'Big Mac',
+    description: 'O clássico Big Mac, com dois hambúrgueres, alface, queijo, molho especial e pão com gergelim.',
+    price: 'R$ 39,90',
+    image: require('../images/lanche-big-mac.png')
+},
+{
+    id: 'lanche-2',
+    name: 'Duplo quarterão',
+    description: 'O duplo quarterão, com dois hambúrgueres, alface, queijo, molho especial e pão com gergelim.',
+    price: 'R$ 41,50',
+    image: require('../images/lanche-duplo-quarterao.png')
+},
+{
+    id: 'lanche-3',
+    name: 'McMelt',
+    description: 'O McMelt, com hambúrguer, queijo derretido, cebola caramelizada e pão com gergelim.',
+    price: 'R$ 39,90',
+    image: require('../images/lanche-mcmelt.png'),
+},
+{
+    id: 'lanche-4',
+    name: 'McNífico Bacon',
+    description: 'O McNífico Bacon, com hambúrguer, queijo derretido, cebola caramelizada e pão com gergelim.',
+    price: 'R$ 41,50',
+    image: require('../images/lanche-mcnifico-bacon.png'),
+},
+];
+
+const fritas: Product[] = [
+    {
+        id: 'fritas-1',
+        name: 'Fritas Média',
+        description: 'Porção média de batatas fritas crocantes.',
+        price: 'R$ 12,90',
+        image: require('../images/fritas-media.png')
+    },
+    {
+        id: 'fritas-2',
+        name: 'Fritas Grande',
+        description: 'Porção grande de batatas fritas crocantes.'
+         price: 'R$ 15,90',
+         image: require('../images/fritas-grande.png')
+    }
+]
+
 
 const categories = ['Combos', 'Lanches', 'Bebidas', 'Fritas'];
 
